@@ -1,0 +1,56 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="provedor" (ngSubmit)="grabar()">
+      <div class="mb-2">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" formControlName="Nombre" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">Nombres es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Producto_suministrado">Pruducto suministrado</label>
+        <input type="text" class="form-control" formControlName="Producto_suministrado" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El numero telefonico es requerido</div>
+          
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Fecha_inicio_contrato">Fecha_inicio_contrato</label>
+        <input type="date" class="form-control" formControlName="Fecha_inicio_contrato" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El correo electrónico es requerido</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="mb-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!provedor.valid"
+        >
+          Grabar
+        </button>
+        <button class="btn btn-secondary" routerLink="/dashboard/proveedores">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

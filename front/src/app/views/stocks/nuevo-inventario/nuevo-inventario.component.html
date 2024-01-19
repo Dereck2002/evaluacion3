@@ -1,0 +1,71 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+  </div>
+  <!--form-->
+  <div class="card-body">
+    <form [formGroup]="stock" (ngSubmit)="grabar()">
+      <div class="mb-2">
+        <label for="ID_proveedor">Proveedor</label>
+        <select class="form-control" formControlName="ID_proveedor">
+          <option value="0">Seleccione una opción</option>
+          @for (proveedor of ListaProveedores; track proveedor.ID_proveedor) {
+          <option [value]="proveedor.ID_proveedor">{{ proveedor.Nombre }}</option>
+          }
+        </select>
+
+        @if (stock.invalid && (stock.dirty || stock.touched)) {
+        <div class="alert alert-danger">
+          @if (stock.errors?.["required"]) {
+          <div class="bg-primary">Id proveedor es requerido</div>
+          }
+        </div>
+        
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Nombre_producto"> Nombre </label>
+        <input type="text" class="form-control" formControlName="Nombre_producto" />
+        @if (stock.invalid && (stock.dirty || stock.touched)) {
+        <div class="alert">
+          @if (stock.errors?.["required"]) {
+          <div class="ng-invalid">Nombre es requerido</div>
+          }
+        </div>
+      }
+      </div>
+      <div class="mb-2">
+        <label for="Cantidad"> Cantidad </label>
+        <input type="text" class="form-control" formControlName="Cantidad" />
+        @if (stock.invalid && (stock.dirty || stock.touched)) {
+        <div class="alert">
+          @if (stock.errors?.["required"]) {
+          <div class="ng-invalid">Cantidad es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Precio_unitario"> Precio_unitario </label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="Precio_unitario"
+        />
+        @if (stock.invalid && (stock.dirty || stock.touched)) {
+        <div class="alert">
+          @if (stock.errors?.["required"]) {
+          <div class="ng-invalid">Precio de Venta es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <button type="submit" class="btn btn-primary" [disabled]="!stock.valid">
+          Grabar
+        </button>
+        <button class="btn btn-secondary" routerLink="/dashboard/inventarios">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

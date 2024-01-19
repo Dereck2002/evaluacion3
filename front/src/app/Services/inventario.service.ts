@@ -8,7 +8,7 @@ import { IStock } from '../Interfaces/iinventario';
 })
 export class InventarioService {
   private urlBase: string =
-    'http://localhost/Examen_Segunda_Parcial/Inventario/Controllers/Inventario.Controller.php?op=';
+    'http://localhost/evaluacion3/Inventario/Controllers/Inventario.Controller.php?op=';
   constructor(private cliente: HttpClient) {}
 
   todos(): Observable<IStock[]> {

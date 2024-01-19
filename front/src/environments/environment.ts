@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  URL: 'http://localhost/Examen_Segunda_Parcial/Inventario/Controllers/',
+  URL: 'http://localhost/evaluacion3/Inventario/Controllers/',
   rol: '',
 };
